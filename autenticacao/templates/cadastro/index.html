@@ -1,11 +1,24 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Cadastre-se</h1>
-</body>
+  <head>
+
+    <meta charset="UTF-8">
+    <title>{% block 'titulo' %}Minha Página{% endblock %}</title>
+
+    {% block 'head' %}
+      <link rel="stylesheet" href="{% static 'css/css.css' %}">
+    {% endblock %}
+
+  </head>
+
+  <body>
+
+    {% block 'conteudo' %}
+      <h1>Cadastre-se</h1>
+      <img width="50%" src="{% static 'img/wallpaper.png' %}">
+    {% endblock %}
+
+  </body>
 </html>
