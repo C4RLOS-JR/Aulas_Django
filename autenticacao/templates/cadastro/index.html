@@ -1,24 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 
-<html lang="pt-BR">
-  <head>
+{% block 'titulo' %}Minha Página{% endblock %}
 
-    <meta charset="UTF-8">
-    <title>{% block 'titulo' %}Minha Página{% endblock %}</title>
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static 'css/css.css' %}">
+{% endblock %}
 
-    {% block 'head' %}
-      <link rel="stylesheet" href="{% static 'css/css.css' %}">
-    {% endblock %}
+{% block 'conteudo' %}
+  <div class="container">
+    <h1>Cadastre-se</h1>
+    <hr>
 
-  </head>
+    <form method="POST" action="{% url 'cadastro' %}"> {% csrf_token %}
+      <p>Nome:</p>
+      <input class="form-control" type="text" placeholder="Digite seu nome" name="nome">
+      <br>
+      <p>Email:</p>
+      <input class="form-control" type="email" placeholder="Digite seu email" name="email">
+      <br><br>
+      <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
+      <br><br>
+    </form>
 
-  <body>
-
-    {% block 'conteudo' %}
-      <h1>Cadastre-se</h1>
-      <img width="50%" src="{% static 'img/wallpaper.png' %}">
-    {% endblock %}
-
-  </body>
-</html>
+    {{nome}}
+    {{email}}
+    
+    <img width="50%" src="{% static 'img/wallpaper.png' %}">
+  </div>
+{% endblock %}
