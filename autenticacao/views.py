@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from .models import Pessoa
 import json
 
 def cadastro(request):
@@ -8,4 +9,11 @@ def cadastro(request):
   elif request.method == 'POST':
     nome = request.POST.get('nome')
     email = request.POST.get('email')
-    return HttpResponse(json.dumps({'nome': nome, 'email': email}))
+    senha = request.POST.get('senha')
+
+    pessoa = Pessoa(nome=nome, 
+                    email=email,
+                    senha=senha)
+    # pessoa.save()
+
+    return redirect('/autenticacao/cadastro/?status=0')

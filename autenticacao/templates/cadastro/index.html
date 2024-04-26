@@ -18,14 +18,22 @@
       <br>
       <p>Email:</p>
       <input class="form-control" type="email" placeholder="Digite seu email" name="email">
+      <br>
+      <p>Senha:</p>
+      <input class="form-control" type="password" placeholder="Digite sua senha" name="senha">
       <br><br>
       <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
       <br><br>
     </form>
 
-    {{nome}}
-    {{email}}
+    {% if status == '0' %}
+      <div align="center" class="alert alert-success" role="alert">
+        Usuário cadastrado com sucesso!
+      </div>
+    {% else %}
+      {{'erro'}}
+    {% endif %}
+
     
-    <img width="50%" src="{% static 'img/wallpaper.png' %}">
   </div>
 {% endblock %}
