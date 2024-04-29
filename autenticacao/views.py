@@ -15,10 +15,17 @@ def cadastro(request):
                     senha=senha)
     pessoa.save()
 
-    return redirect('/autenticacao/cadastro/?status=0')
+    return redirect('/autenticacao/cadastro')
   
   
 def listar(request):
   pessoas = Pessoa.objects.all()
+  nome = request.POST.get('nome')
+  email = request.POST.get('email')
+  print(nome)
+  print(email)
 
-  return render(request, 'listar/index.html', {'pessoas': pessoas})
+  # if not nome and not email:
+  #   return render(request, 'listar/index.html', {'pessoas': pessoas})
+  # else:
+  return render(request, 'listar/index.html')

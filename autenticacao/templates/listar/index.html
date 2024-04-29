@@ -2,11 +2,15 @@
 
 {% block 'conteudo' %}
 
-<form action="listar">
-  <input type="text" method="POST" name="pesquisa" placeholder="Pesquisar...">
-  <button type="submit">Buscar</button>
-</form>
-<br><br>
+<div class="container">
+  <form method="POST" action="listar"> {% csrf_token %}
+    <br>
+    <input type="text" name="nome" placeholder="Pesquisar nome...">
+    <input type="text" name="email" placeholder="Pesquisar email...">
+    <button type="submit">Buscar</button>
+  </form>
+  
+  <br><br>
 
   {% for pessoa in pessoas %}
     <h1>Nome: {{pessoa.nome}}</h1>
@@ -14,5 +18,6 @@
     <h1>Senha: {{pessoa.senha}}</h1>
     <hr>
   {% endfor %}
+</div>
 
 {% endblock  %}

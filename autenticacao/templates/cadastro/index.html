@@ -9,7 +9,9 @@
 
 {% block 'conteudo' %}
   <div class="container">
-    <h1>Cadastre-se</h1>
+    <br>
+    <img width="8%" src="{% static 'img/django.png' %}">
+    <h1 align="center">Cadastre-se</h1>
     <hr>
 
     <form method="POST" action="{% url 'cadastro' %}"> {% csrf_token %}
