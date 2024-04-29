@@ -10,10 +10,15 @@ def cadastro(request):
     nome = request.POST.get('nome')
     email = request.POST.get('email')
     senha = request.POST.get('senha')
-
     pessoa = Pessoa(nome=nome, 
                     email=email,
                     senha=senha)
-    # pessoa.save()
+    pessoa.save()
 
     return redirect('/autenticacao/cadastro/?status=0')
+  
+  
+def listar(request):
+  pessoas = Pessoa.objects.all()
+
+  return render(request, 'listar/index.html', {'pessoas': pessoas})

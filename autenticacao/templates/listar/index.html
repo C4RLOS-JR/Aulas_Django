@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block 'conteudo' %}
+
+<form action="listar">
+  <input type="text" method="POST" name="pesquisa" placeholder="Pesquisar...">
+  <button type="submit">Buscar</button>
+</form>
+<br><br>
+
+  {% for pessoa in pessoas %}
+    <h1>Nome: {{pessoa.nome}}</h1>
+    <h1>Email: {{pessoa.email}}</h1>
+    <h1>Senha: {{pessoa.senha}}</h1>
+    <hr>
+  {% endfor %}
+
+{% endblock  %}

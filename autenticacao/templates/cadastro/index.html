@@ -26,14 +26,13 @@
       <br><br>
     </form>
 
-    {% if status == '0' %}
+    {% comment %} {% if status == '0' %}
       <div align="center" class="alert alert-success" role="alert">
         Usuário cadastrado com sucesso!
       </div>
     {% else %}
       {{'erro'}}
-    {% endif %}
-
-    
+    {% endif %} {% endcomment %}
+   
   </div>
 {% endblock %}
