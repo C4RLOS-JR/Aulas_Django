@@ -9,19 +9,18 @@
 
 {% block 'conteudo' %}
   <div class="container">
-    <br>
-    <img width="8%" src="{% static 'img/django.png' %}">
-    <h1 align="center">Cadastre-se</h1>
+    <img style="display: inline-block" width="8%" src="{% static 'img/django.png' %}">
+    <h1 style="display: inline-block; margin-left: 30px">Cadastre-se</h1>
     <hr>
 
     <form method="POST" action="{% url 'cadastro' %}"> {% csrf_token %}
-      <p>Nome:</p>
+      <label>Nome:</label>
       <input class="form-control" type="text" placeholder="Digite seu nome" name="nome">
       <br>
-      <p>Email:</p>
+      <label>Email:</label>
       <input class="form-control" type="email" placeholder="Digite seu email" name="email">
       <br>
-      <p>Senha:</p>
+      <label>Senha:</label>
       <input class="form-control" type="password" placeholder="Digite sua senha" name="senha">
       <br><br>
       <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
