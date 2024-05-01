@@ -1,35 +1,29 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block 'titulo' %}Listar{% endblock %}
 
-{% block 'head' %}
-  <link rel="stylesheet" href="{% static 'css/css.css' %}">
-{% endblock %}
+{% block 'head' %}{% endblock %}
 
 {% block 'conteudo' %}
 
-  <div class="container">
-    <img style="display: inline-block" width="8%" src="{% static 'img/django.png' %}">
-    <h1 style="display: inline-block; margin-left: 30px">Alterar Dados</h1>
-    <hr>
-    
-    <form method="POST" action="{% url 'alterar' id %}"> {% csrf_token %}
-      <br>
-      <label>Nome:</label>
-      <input class="form-control" type="text" name="nome" placeholder="Alterar nome...">
-      <br>
-      <label>Emal:</label>
-      <input class="form-control" type="email" name="email" placeholder="Alterar email...">
-      <br>
-      <label>Senha:</label>
-      <input class="form-control" type="password" name="senha" placeholder="Alterar senha...">
-      <br>
-      <button class="btn btn-primary" type="submit">Alterar</button>
-    </form>
+  <h1>Alterar Dados</h1>
+  <hr>
+  
+  <form method="POST" action="{% url 'alterar' id %}"> {% csrf_token %}
+    <label>Nome:</label>
+    <input class="form-control" type="text" name="nome" placeholder="Alterar nome...">
+    <br>
+    <label>Email:</label>
+    <input class="form-control" type="email" name="email" placeholder="Alterar email...">
+    <br>
+    <label>Senha:</label>
+    <input class="form-control" type="password" name="senha" placeholder="Alterar senha...">
+    <br>
+    Administrador
+    <input type="radio" name="cargo" value="1">
+    Cliente
+    <input type="radio" name="cargo" value="2">
     <br><br>
-
-    
-  </div>
-
+    <button class="btn btn-primary" type="submit">Alterar</button>
+  </form>
 {% endblock  %}

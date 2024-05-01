@@ -1,3 +1,20 @@
 body{
-  background-color: aquamarine;
+  background-color: lightgray;
+}
+
+nav .menu {
+  color: white;
+  opacity: 0.5;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+nav .menu:hover {
+  color: white;
+  opacity: 1;
+}
+
+nav .menu:focus {
+  color: white;
+  opacity: 1;
 }

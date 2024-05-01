@@ -1,39 +1,31 @@
 {% extends "base.html" %}
-{% load static %}
 
-{% block 'titulo' %}Minha Página{% endblock %}
+{% block 'titulo' %}Cadastrar{% endblock %}
 
-{% block 'head' %}
-  <link rel="stylesheet" href="{% static 'css/css.css' %}">
-{% endblock %}
+{% block 'head' %}{% endblock %}
 
 {% block 'conteudo' %}
-  <div class="container">
-    <img style="display: inline-block" width="8%" src="{% static 'img/django.png' %}">
-    <h1 style="display: inline-block; margin-left: 30px">Cadastre-se</h1>
-    <hr>
-
-    <form method="POST" action="{% url 'cadastro' %}"> {% csrf_token %}
-      <label>Nome:</label>
-      <input class="form-control" type="text" placeholder="Digite seu nome" name="nome">
-      <br>
-      <label>Email:</label>
-      <input class="form-control" type="email" placeholder="Digite seu email" name="email">
-      <br>
-      <label>Senha:</label>
-      <input class="form-control" type="password" placeholder="Digite sua senha" name="senha">
-      <br><br>
-      <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
-      <br><br>
-    </form>
-
-    {% comment %} {% if status == '0' %}
-      <div align="center" class="alert alert-success" role="alert">
-        Usuário cadastrado com sucesso!
-      </div>
-    {% else %}
-      {{'erro'}}
-    {% endif %} {% endcomment %}
    
-  </div>
+  <h1>Cadastre-se</h1>
+  <hr>
+
+  <form method="POST" action="{% url 'cadastro' %}"> {% csrf_token %}
+    <label>Nome:</label>
+    <input class="form-control" type="text" placeholder="Digite seu nome" name="nome">
+    <br>
+    <label>Email:</label>
+    <input class="form-control" type="email" placeholder="Digite seu email" name="email">
+    <br>
+    <label>Senha:</label>
+    <input class="form-control" type="password" placeholder="Digite sua senha" name="senha">
+    <br>
+    Administrador
+    <input type="radio" name="cargo" value="1">
+    Cliente
+    <input type="radio" name="cargo" value="2">
+    <br><br>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <br><br>
+  </form>
+  
 {% endblock %}

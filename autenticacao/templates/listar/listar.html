@@ -1,47 +1,31 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block 'titulo' %}Listar{% endblock %}
 
-{% block 'head' %}
-  <link rel="stylesheet" href="{% static 'css/css.css' %}">
-{% endblock %}
+{% block 'head' %}{% endblock %}
 
 {% block 'conteudo' %}
 
-  <div class="container">
-    <img style="display: inline-block" width="8%" src="{% static 'img/django.png' %}">
-    <h1 style="display: inline-block; margin-left: 30px">Listar</h1>
+  <h1>Listar</h1>
+  <hr>
+  <form method="POST" action="{% url 'listar' %}"> {% csrf_token %}
+    <br>
+    <input type="text" name="nome" placeholder="Pesquisar por nome...">
+    <input type="text" name="email" placeholder="Pesquisar por email...">
+    <button type="submit">Buscar</button>
+  </form>
+  <br>
+
+  <h3>Resultado da busca:</h3>
     <hr>
-    <form method="POST" action="{% url 'listar' %}"> {% csrf_token %}
-      <br>
-      <input type="text" name="nome" placeholder="Pesquisar por nome...">
-      <input type="text" name="email" placeholder="Pesquisar por email...">
-      <button type="submit">Buscar</button>
-    </form>
-    <br><br>
+    {% for pessoa in pessoas %}
+      <h4>Nome: {{pessoa.nome}}</h4>
+      <h4>Email: {{pessoa.email}}</h4>
+      <h4>Status: {{pessoa.cargo}}</h4>
 
-    {% if pessoa %}
-      <h3>Resultado:</h3>
+      <a method="POST" href="{% url 'alterar' pessoa.id %}" class="btn btn-primary">Alterar</a>
+      <a method="POST" href="{% url 'excluir' pessoa.id %}" class="btn btn-danger">Excluir</a>
       <hr>
-      <h4>Nome: {{pessoa.0.nome}}</h4>
-      <h4>Email: {{pessoa.0.email}}</h4>
-      <h4>Senha: {{pessoa.0.senha}}</h4>
-
-      <a method="POST" href="{% url 'alterar' pessoa.0.id %}" class="btn btn-primary">Alterar</a>
-      <a method="POST" href="{% url 'excluir' pessoa.0.id %}" class="btn btn-danger">Excluir</a>
-
-
-    {% elif pessoas %}
-      <h3>Todos:</h3>
-      <hr>
-      {% for pessoa in pessoas %}
-        <h4>Nome: {{pessoa.nome}}</h4>
-        <h4>Email: {{pessoa.email}}</h4>
-        <h4>Senha: {{pessoa.senha}}</h4>
-        <hr>
-      {% endfor %}
-    {% endif %}
-  </div>
+    {% endfor %}
 
 {% endblock  %}
